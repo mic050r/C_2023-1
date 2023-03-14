@@ -2,6 +2,7 @@
 
 int main(void)
 {
+
 	printf("2 X 1 = 2\n");
 	printf("2 X 2 = 4\n");
 	printf("2 X 3 = 6\n");
