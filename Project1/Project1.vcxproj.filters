@@ -18,5 +18,8 @@
     <ClCompile Include="구구단.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="문법\C++ 기본.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
