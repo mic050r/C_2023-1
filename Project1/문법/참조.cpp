@@ -4,7 +4,7 @@ using namespace std;
 int main(void) {
 
 	int a = 30;	
-	int&ra = a;	
+	int& ra = a;	
 
 	ra = 100;		// ra가 가리키고 있는 대상 : 100
 
