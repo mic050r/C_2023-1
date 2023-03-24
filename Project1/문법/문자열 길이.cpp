@@ -9,10 +9,7 @@
 int main(void) {
 
 	char str1[30] = "Jihyeon";
-	int len = 0;
+	int len = strlen(str1);
 
-	for (int i = 0; str1[i] != '\0'; i++) {
-		len++;
-	}
 	printf("문자열의 길이는 %d \n", len);
 }
