@@ -1,5 +1,5 @@
 ﻿#include <stdio.h>
-#include <string.h>
+#include <string.h>	// 문자열 함수가 들어있음
 
 int main(void) {
 	char str1[30] = "";
