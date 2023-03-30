@@ -29,11 +29,11 @@ int main(void) {
 	}
 	else if (result == 1) {
 		printf("str1 > str2");
-	} 
+	}
 	else {
 		cout << "str1 > str2";
 	}
 	return 0;
 }
-		
+
 
