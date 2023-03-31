@@ -11,6 +11,15 @@ public:
 	string tel;
 	string department;
 	string address;
+
+	void print() {
+		cout << "==========학생 정보==========" << endl;
+		cout << "학번 : " << hakbun << endl;
+		cout << "이름 : " << name << endl;
+		cout << "학과 : " << department << endl;
+		cout << "전화번호 : " << tel << endl;
+		cout << "주소 : " << address << endl;
+	}
 };
 
 int main(void) {
@@ -27,12 +36,9 @@ int main(void) {
 	stu1.tel = "010-2222-9999";
 	stu1.address = "경기도 수원시";
 
-	cout << "==========학생 정보==========" << endl;
-	cout << "학번 : " << stu1.hakbun << endl;
-	cout << "이름 : " << stu1.name << endl;
-	cout << "학과 : " << stu1.department << endl;
-	cout << "전화번호 : " << stu1.tel << endl;
-	cout << "주소 : " << stu1.address << endl;
+	stu1.print();
+
+	return 0;
 }
 
 
