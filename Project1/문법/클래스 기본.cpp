@@ -12,6 +12,7 @@ public:
 	string department;
 	string address;
 
+	//class 멤버 함수를 가질 수 있다
 	void print() {
 		cout << "==========학생 정보==========" << endl;
 		cout << "학번 : " << hakbun << endl;
