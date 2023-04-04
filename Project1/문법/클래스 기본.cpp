@@ -6,18 +6,33 @@ using namespace std;
 // 구조체, 클래스느느 일반적으로 단어의첫 글자로 대문자로 함
 class Student {
 public:
+private:
+
 	int hakbun;
 	string name;
 	string tel;
 	string department;
 	string address;
 
-	// 생성자 (constructor) : 객체를 생성할 때 호출되는 함수
+	// 생성자 (constructor) : 객체를 생성할 때 호출되는 함수 tp나올듯
 	// 생성자를 정의하지 않으면 default로 매개변수가 없는 생성자가 정의 된다
-	// Student(){}
+public:
+	Student() {
+		hakbun = 2214;
+		name = "임지현";
+		department = "소프트웨어과";
+		tel = "010-2222-9999";
+		address = "경기도 수원시";
+	}
 
 	//class 멤버 함수를 가질 수 있다
 	void print() {
+		hakbun = 2214;
+		name = "임지현";
+		department = "소프트웨어과";
+		tel = "010-2222-9999";
+		address = "경기도 수원시";
+
 		cout << "==========학생 정보==========" << endl;
 		cout << "학번 : " << hakbun << endl;
 		cout << "이름 : " << name << endl;
@@ -35,11 +50,6 @@ int main(void) {
 	// 정수는 비교 연산을 한 번에 할 수 있으나, 문자열을 글자수 만큼 반복하여 비교해야함
 	// class는 디폴트 private(struct는 디폴트가 public)
 
-	stu1.hakbun = 2214;
-	stu1.name = "임지현";
-	stu1.department = "소프트웨어과";
-	stu1.tel = "010-2222-9999";
-	stu1.address = "경기도 수원시";
 
 	stu1.print();
 
