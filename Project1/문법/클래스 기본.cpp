@@ -5,18 +5,10 @@ using namespace std;
 // 여러 data들을 하나의 의미있는 구조체로 묶어서 관리
 // 구조체, 클래스느느 일반적으로 단어의첫 글자로 대문자로 함
 class Student {
+
 public:
-private:
-
-	int hakbun;
-	string name;
-	string tel;
-	string department;
-	string address;
-
 	// 생성자 (constructor) : 객체를 생성할 때 호출되는 함수 tp나올듯
 	// 생성자를 정의하지 않으면 default로 매개변수가 없는 생성자가 정의 된다
-public:
 	Student() {
 		hakbun = 2214;
 		name = "임지현";
@@ -40,6 +32,16 @@ public:
 		cout << "전화번호 : " << tel << endl;
 		cout << "주소 : " << address << endl;
 	}
+
+
+private:
+
+	int hakbun;
+	string name;
+	string tel;
+	string department;
+	string address;
+
 };
 
 int main(void) {
