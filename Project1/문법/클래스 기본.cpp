@@ -2,8 +2,14 @@
 #include <string>	
 using namespace std;
 
+struct Person {
+	int height;
+	int weight;
+
+};
 // 여러 data들을 하나의 의미있는 구조체로 묶어서 관리
-// 구조체, 클래스느느 일반적으로 단어의첫 글자로 대문자로 함
+// 구조체, 클래스는 일반적으로 단어의첫 글자로 대문자로 함
+// class는 디폴트 private(struct는 디폴트가 public)
 class Student {
 
 public:
@@ -44,7 +50,7 @@ private:
 	// 성능 때문에 hakbun을 문자열로 하지 않음
 	// 일반적으로 문자열은 정수형 데이터보다 많은 메모리 공간을 요구하며
 	// 정수는 비교 연산을 한 번에 할 수 있으나, 문자열을 글자수 만큼 반복하여 비교해야함
-	// class는 디폴트 private(struct는 디폴트가 public)
+	
 
 	int hakbun;
 	string name;
@@ -63,7 +69,19 @@ int main(void) {
 	// Student stu1;
 	//stu1.print();
 	Student stu2 = Student(2214, "최연준와이프", "010-1004-1004", "뉴미디어소프트웨어과", "네마음속");
-	stu2.print();
+	//stu2.print();
+
+	struct Person p;
+	p.height = 181;
+	p.weight = 62;
+	
+	struct Person* ptr = &p;
+
+	
+	cout << "키 : " << (*ptr).height << endl;
+	cout << "몸무게 : " << (*ptr).weight << endl;
+	
+
 	return 0;
 }
 
