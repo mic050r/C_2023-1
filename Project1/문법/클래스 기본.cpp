@@ -24,13 +24,13 @@ public:
 	}
 
 public:
-	Student(int _hakbun, string _name, string _department, string _tel, string _address) {
+	Student(int hakbun, string name, string department, string tel, string address) {
 
-		hakbun = _hakbun;
-		name = _name;
-		department = _department;
-		tel = _tel;
-		address = _address;
+		this->hakbun = hakbun;
+		this->name = name;
+		this->department = department;
+		this->tel = tel;
+		this->address = address;
 
 	}
 
@@ -69,17 +69,8 @@ int main(void) {
 	// Student stu1;
 	//stu1.print();
 	Student stu2 = Student(2214, "최연준와이프", "010-1004-1004", "뉴미디어소프트웨어과", "네마음속");
-	//stu2.print();
+	stu2.print();
 
-	struct Person p;
-	p.height = 181;
-	p.weight = 62;
-	
-	struct Person* ptr = &p;
-
-	// 둘 다 같은 결과
-	cout << "키 : " << ptr->height << endl;
-	cout << "몸무게 : " << (*ptr).weight << endl;
 	
 
 	return 0;
