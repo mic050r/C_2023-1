@@ -23,16 +23,12 @@ public:
 		address = "경기도 수원시";
 	}
 
-public:
-	Student(int hakbun, string name, string department, string tel, string address) {
-
-		this->hakbun = hakbun;
-		this->name = name;
-		this->department = department;
-		this->tel = tel;
-		this->address = address;
-
+	Student(int _hakbun, string _name, string _department, string _tel, string _address) 
+		// 멤버 변수 초기화. const/참조형 멤버변수 사용 가능
+		: hakbun(_hakbun), name(_name), tel(_tel), department(_department),address(_address)
+	{
 	}
+	
 
 	//class 멤버 함수를 가질 수 있다
 	void print() {
@@ -62,6 +58,7 @@ private:
 
 int main(void) {
 	// 자료형 : Student(class 생략 가능)
+	// 자료형 : Student(class 생략 가능)
 	
 	
 	// 매개변수가 없는 생성자
@@ -69,7 +66,7 @@ int main(void) {
 	// Student stu1;
 	//stu1.print();
 	Student stu2 = Student(2214, "최연준와이프", "010-1004-1004", "뉴미디어소프트웨어과", "네마음속");
-	stu2.print();
+	//stu2.print();
 
 	
 
