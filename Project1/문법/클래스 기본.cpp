@@ -14,6 +14,7 @@ class Student {
 
 public:
 	// 생성자 (constructor) : 객체를 생성할 때 호출되는 함수 tp나올듯
+	// 생성자는 반환형을 쓰지 않는다.
 	// 생성자를 정의하지 않으면 default로 매개변수가 없는 생성자가 정의 된다
 	Student() {
 		hakbun = 2214;
