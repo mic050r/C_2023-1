@@ -16,6 +16,7 @@ public:
 	// 생성자 (constructor) : 객체를 생성할 때 호출되는 함수 tp나올듯
 	// 생성자는 반환형을 쓰지 않는다.
 	// 생성자를 정의하지 않으면 default로 매개변수가 없는 생성자가 정의 된다
+	
 	Student() {
 		hakbun = 2214;
 		name = "임지현";
@@ -41,7 +42,11 @@ public:
 		cout << "주소 : " << address << endl;
 	}
 
-
+	void set_hackbun(int _hackbun) { hakbun = _hackbun;  }
+	void set_name(string _name) { name = _name;  }
+	void set_tel(string _tel) {tel = _tel; }
+	void set_department(string _department) {department = _department; }
+	void set_address(string _address) {address = _address; }
 
 private:
 	// 성능 때문에 hakbun을 문자열로 하지 않음
@@ -81,8 +86,20 @@ int main(void) {
 	stu3->print();*/       // stu3의 멤버는 ->로 접근
 	// 동적할당 해제(안하면 메모리 누수현상이 발생)
 	// delete stu3;
-
 	Student* stu4 = new Student[2];
+	stu4[0].set_name("최연준");
+	stu4[0].set_address("내마음속");
+	stu4[0].set_hackbun(2214);
+	stu4[0].set_department("댄스솦과");
+	stu4[0].set_tel("010-9999-9136");
+
+	stu4[1].set_name("황현진");
+	stu4[1].set_address("지구안 어딘가");
+	stu4[1].set_hackbun(2215);
+	stu4[1].set_department("비주얼과");
+	stu4[1].set_tel("010-4567-8123");
+
+	
 	for (int i = 0; i < 2; i++) {
 		stu4[i].print(); //stu4[i]의 멤버는 .으로 접근
 	}
