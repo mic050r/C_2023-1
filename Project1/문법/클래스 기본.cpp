@@ -70,14 +70,23 @@ int main(void) {
 	// 정적할당 : 컴파일 시간에 메모리 크기가 결정
 	//Student stu2 = Student(2214, "최연준와이프", "댄스과","010-1004-1004", "네마음속");
 	//stu2.print();
-	// 동적활동 : 실행시간(runtime)에 메모리 크기가 결정(메모리 heap영역)
-	// 동적할당된 공간은 포인터로 접근한다.
-	Student* stu3 = new Student(2214, "황현진", "비주얼과", "010-2222-3333",  "내마음속");
-	stu3->print();
+	Student stu3[2];
+	for (int i = 0; i < 2; i++) {
+		stu3[i].print();
+	}
 	
+	// 동적할동 : 실행시간(runtime)에 메모리 크기가 결정(메모리 heap영역)
+	// 동적할당된 공간은 포인터로 접근한다.
+	/*Student* stu3 = new Student(2214, "황현진", "비주얼과", "010-2222-3333",  "내마음속");
+	stu3->print();*/       // stu3의 멤버는 ->로 접근
 	// 동적할당 해제(안하면 메모리 누수현상이 발생)
-	delete stu3;
+	// delete stu3;
 
+	Student* stu4 = new Student[2];
+	for (int i = 0; i < 2; i++) {
+		stu4[i].print(); //stu4[i]의 멤버는 .으로 접근
+	}
+	delete[] stu4;
 	return 0;
 }
 
