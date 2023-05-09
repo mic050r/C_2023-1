@@ -4,6 +4,7 @@ using namespace std;
 
 class MString {
 public:
+	// 일반 생성자
 	MString(const char* str)
 	{
 		unsigned int l = strlen(str);
@@ -11,6 +12,13 @@ public:
 		strcpy(c_str_, str);
 		size_ = l;
 		cout << "MString 생성자 호출 완료" << endl;
+	}
+
+	// 복사 생성자(별도의 정의가 없으면 컴파일러가 알아서 만들어 줌
+	MString(const MString& rhs)
+		: c_str_(rhs.c_str_), size_(rhs.size_)
+	{
+		
 	}
 	// 소멸자(destructor)
 	~MString()
@@ -28,9 +36,12 @@ private:
 };
 
 int main(void) {
-	// 생성자가 호출되면서 "I will be back."(문자열) 만큼의 동적할당이 이뤄짐
+	// 일반생성자 호출
 	MString str = MString("I will be back.");
-	cout << str.c_str() << endl;
+
+	// 복사 생성자 호출
+	MString str2 = str;
+
 
 	
 	return 0;
