@@ -15,9 +15,11 @@ public:
 		delete[] str_;
 		cout << "소멸자 호출" << endl;
 	}
-	// 복사생성자 (얇은 복사)
-	Munja(const Munja& hj):str_(hj.str_)
+	// 복사생성자 (깊은 복사) 
+	Munja(const Munja& hj)
 	{
+		str_ = new char[strlen(hj.str_) + 1];
+		strcpy(str_, hj.str_);
 		cout << "복사생성자 호출" << endl;
 	}
 private:
