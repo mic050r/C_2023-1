@@ -15,6 +15,7 @@ public:
 	}
 
 	// 복사 생성자(별도의 정의가 없으면 컴파일러가 알아서 만들어 줌
+	// TODO : 소멸자 호출 시 에러 발생 
 	MString(const MString& rhs)
 		: c_str_(rhs.c_str_), size_(rhs.size_)
 	{
