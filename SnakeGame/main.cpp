@@ -2,8 +2,7 @@
 #include <stdlib.h> // srand(), rand()
 #include <time.h> // time()
 using namespace sf;
-
-int main(void) {         
+int main(void) {
 
 	srand(time(NULL));
 
@@ -15,12 +14,12 @@ int main(void) {
 	RectangleShape snake;
 	snake.setFillColor(Color::White);
 	snake.setPosition(100, 300);
-	snake.setSize(Vector2f(50,50));
+	snake.setSize(Vector2f(50, 50));
 
 	RectangleShape apple;
 	apple.setFillColor(Color::Red);
 	// 640에 50을 뺀 이유는 사과가 화면 밖에 벗어나지 않게 하기 위함
-	apple.setPosition(rand() % (640-50), rand() % (480 - 50));
+	apple.setPosition(rand() % (640 - 50), rand() % (480 - 50));
 	apple.setSize(Vector2f(50, 50));
 
 
@@ -32,7 +31,7 @@ int main(void) {
 				window.close();
 		}
 		if (Keyboard::isKeyPressed(Keyboard::Right))
-			snake.move(5,0);
+			snake.move(5, 0);
 		if (Keyboard::isKeyPressed(Keyboard::Left))
 			snake.move(-5, 0);
 		if (Keyboard::isKeyPressed(Keyboard::Up))
@@ -40,13 +39,19 @@ int main(void) {
 		if (Keyboard::isKeyPressed(Keyboard::Down))
 			snake.move(0, 5);
 
-
+		// 뱀이 사과를 먹었을 때
+		if (snake.getGlobalBounds().intersects(apple.getGlobalBounds())) {
+			apple.setPosition(rand() % (640 - 50), rand() % (480 - 50));
+		}
+			
+		
 		window.clear();
 
-		window.draw(snake);
-		window.draw(apple); // draw를 늦게 할수록 더 위에 있다.
+			window.draw(snake);
+			window.draw(apple); // draw를 늦게 할수록 더 위에 있다.
 
-		window.display();
+			window.display();
+	
 	}
 	return 0;
 }
