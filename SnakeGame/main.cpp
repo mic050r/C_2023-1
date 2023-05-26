@@ -1,11 +1,18 @@
 ﻿#include <SFML/Graphics.hpp>
 #include <stdlib.h> // srand(), rand()
 #include <time.h> // time()
+#include <stdio.h>
+#define DIR_UP		0
+#define DIR_DOWN	1
+#define DIR_RIGHT	2
+#define DIR_LEFT	3
+
+
 using namespace sf;
 int main(void) {
-
-	const int WIDTH = 1000; // 픽셀 너비
-	const int HEIGTH = 800; // 픽셀 높이
+	printf("%d", DIR_RIGHT);
+	const int WIDTH = 2000; // 픽셀 너비
+	const int HEIGTH = 1000; // 픽셀 높이
 	const int BLOCK_SIZE = 50; // 한 칸이 가지고 있는 픽셀
 	const int G_WIDTH = WIDTH / BLOCK_SIZE; //그리드의 너비
 	const int G_HEIGTH = HEIGTH / BLOCK_SIZE;// 그리드의 높이
@@ -18,6 +25,7 @@ int main(void) {
 
 	RectangleShape snake;
 	int snake_x = 1, snake_y = 2; // 뱀의 그리드 좌표
+	int snake_dir = DIR_DOWN;	  // 뱀이 이동하는 방향
 	snake.setFillColor(Color::White);
 	snake.setPosition(snake_x* BLOCK_SIZE, snake_y* BLOCK_SIZE);
 	snake.setSize(Vector2f(BLOCK_SIZE, BLOCK_SIZE));
@@ -37,24 +45,40 @@ int main(void) {
 			if (e.type == Event::Closed)
 				window.close();
 		}
+		// input
 		// 방향키가 동시에 눌러지지 않도록 else 처리
 		if (Keyboard::isKeyPressed(Keyboard::Right)) {
-			snake_x++;
-			snake.move(BLOCK_SIZE, 0);
+			snake_dir = DIR_RIGHT;
 		}
 			
 		else if (Keyboard::isKeyPressed(Keyboard::Left)) {
-			snake_x--;
-			snake.move(-BLOCK_SIZE, 0);
+			snake_dir = DIR_LEFT;
 		}
 		else if (Keyboard::isKeyPressed(Keyboard::Up)) {
-			snake_y--;
-			snake.move(0, -BLOCK_SIZE);
+			snake_dir = DIR_UP;
 		}
 		else if (Keyboard::isKeyPressed(Keyboard::Down)) {
-			snake_y++;
-			snake.move(0, BLOCK_SIZE);
+			snake_dir = DIR_DOWN;
 		}
+
+		// update
+		if (snake_dir == DIR_UP) {
+			snake_y--;
+		}
+		else if (snake_dir == DIR_DOWN) {
+			snake_y++;
+		}
+		else if (snake_dir == DIR_RIGHT) {
+			snake_x++;
+		}
+		else if (snake_dir == DIR_LEFT) {
+			snake_x--;
+		}
+		snake.setPosition(snake_x * BLOCK_SIZE, snake_y * BLOCK_SIZE);
+
+		// update
+		snake_y++;
+		snake.move(0, BLOCK_SIZE);
 
 		// 뱀이 사과를 먹었을 때
 		if (snake.getGlobalBounds().intersects(apple.getGlobalBounds())) {
@@ -62,7 +86,7 @@ int main(void) {
 			apple.setPosition(apple_x * BLOCK_SIZE, apple_y * BLOCK_SIZE);
 		}
 			
-		
+		// render
 		window.clear();
 
 			window.draw(snake);
