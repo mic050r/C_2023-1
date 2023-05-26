@@ -50,7 +50,6 @@ int main(void) {
 		if (Keyboard::isKeyPressed(Keyboard::Right)) {
 			snake_dir = DIR_RIGHT;
 		}
-			
 		else if (Keyboard::isKeyPressed(Keyboard::Left)) {
 			snake_dir = DIR_LEFT;
 		}
@@ -81,7 +80,7 @@ int main(void) {
 		snake.move(0, BLOCK_SIZE);
 
 		// 뱀이 사과를 먹었을 때
-		if (snake.getGlobalBounds().intersects(apple.getGlobalBounds())) {
+		if (snake_x == apple_x && snake_y == apple_y) {
 			int apple_x = rand() % G_WIDTH, apple_y = rand() % G_HEIGTH;
 			apple.setPosition(apple_x * BLOCK_SIZE, apple_y * BLOCK_SIZE);
 		}
