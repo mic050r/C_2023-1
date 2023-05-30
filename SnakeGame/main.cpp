@@ -16,12 +16,14 @@ class Object {
 public:
 	int x_;
 	int y_;
+	
 	RectangleShape sprite_;
 };
 
 class Snake {
 public:
 	int dir_;
+	int length_;
 	Object body_[BODY_MAX];
 };
 
@@ -50,6 +52,8 @@ int main(void)
 
 	Snake snake;
 	snake.dir_ = DIR_DOWN;			// 뱀이 이동하는 방향
+	snake.length_ = 1;
+
 	for (int i = 0; i < BODY_MAX; i++)
 	{
 		snake.body_[i].x_ = -50, snake.body_[i].y_ = -50;		// 뱀의 그리드 좌표
@@ -90,6 +94,7 @@ int main(void)
 		}
 
 		// update
+		// 머리
 		if (snake.dir_ == DIR_UP && snake.body_[0].y_ > 0) {
 			snake.body_[0].y_--;
 		}
@@ -104,17 +109,30 @@ int main(void)
 		}
 		snake.body_[0].sprite_.setPosition(snake.body_[0].x_ * BLOCK_SIZE, snake.body_[0].y_ * BLOCK_SIZE);
 
+		// 머리 이외의 몸통
+		for (int i = snake.length_ - 1; i > 0 ; i--)
+		{
+			snake.body_[i].x_ = snake.body_[i - 1].x_;
+			snake.body_[i].y_ = snake.body_[i - 1].y_; 
+			snake.body_[i].sprite_.setPosition(snake.body_[i].x_ * BLOCK_SIZE, snake.body_[i].y_ * BLOCK_SIZE);
+		}
 		// 뱀이 사과를 먹었을 때,
+		// TODO : 뱀의 길이가 1일 때 두 번 먹어야 길이가 2로 늘어남.
 		if (snake.body_[0].x_ == apple.x_ && snake.body_[0].y_ == apple.y_) {
+			// 사과 위치 전환
 			apple.x_ = rand() % G_WIDTH, apple.y_ = rand() % G_HEIGHT;
 			apple.sprite_.setPosition(apple.x_ * BLOCK_SIZE, apple.y_ * BLOCK_SIZE);
+
+			// 뱀의 길이를 변환
+			if(snake.length_ < 20)
+				snake.length_++;	
 		}
 
 
 		// render
 		window.clear();
 
-		for (int i = 0; i < BODY_MAX; i++) {
+		for (int i = 0; i < snake.length_; i++) {
 			window.draw(snake.body_[i].sprite_);
 		}
 		
