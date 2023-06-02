@@ -94,20 +94,7 @@ int main(void)
 		}
 
 		// update
-		// 머리
-		if (snake.dir_ == DIR_UP && snake.body_[0].y_ > 0) {
-			snake.body_[0].y_--;
-		}
-		else if (snake.dir_ == DIR_DOWN && snake.body_[0].y_ < G_HEIGHT - 1 ) {
-			snake.body_[0].y_++;
-		}
-		else if (snake.dir_ == DIR_RIGHT && snake.body_[0].x_ < G_WIDTH-1) {
-			snake.body_[0].x_++;
-		}
-		else if (snake.dir_ == DIR_LEFT && snake.body_[0].x_ > 0) {
-			snake.body_[0].x_--;
-		}
-		snake.body_[0].sprite_.setPosition(snake.body_[0].x_ * BLOCK_SIZE, snake.body_[0].y_ * BLOCK_SIZE);
+		
 
 		// 머리 이외의 몸통
 		for (int i = snake.length_ - 1; i > 0 ; i--)
@@ -116,8 +103,23 @@ int main(void)
 			snake.body_[i].y_ = snake.body_[i - 1].y_; 
 			snake.body_[i].sprite_.setPosition(snake.body_[i].x_ * BLOCK_SIZE, snake.body_[i].y_ * BLOCK_SIZE);
 		}
+
+		// 머리
+		if (snake.dir_ == DIR_UP && snake.body_[0].y_ > 0) {
+			snake.body_[0].y_--;
+		}
+		else if (snake.dir_ == DIR_DOWN && snake.body_[0].y_ < G_HEIGHT - 1) {
+			snake.body_[0].y_++;
+		}
+		else if (snake.dir_ == DIR_RIGHT && snake.body_[0].x_ < G_WIDTH - 1) {
+			snake.body_[0].x_++;
+		}
+		else if (snake.dir_ == DIR_LEFT && snake.body_[0].x_ > 0) {
+			snake.body_[0].x_--;
+		}
+		snake.body_[0].sprite_.setPosition(snake.body_[0].x_ * BLOCK_SIZE, snake.body_[0].y_ * BLOCK_SIZE);
+
 		// 뱀이 사과를 먹었을 때,
-		// TODO : 뱀의 길이가 1일 때 두 번 먹어야 길이가 2로 늘어남.
 		if (snake.body_[0].x_ == apple.x_ && snake.body_[0].y_ == apple.y_) {
 			// 사과 위치 전환
 			apple.x_ = rand() % G_WIDTH, apple.y_ = rand() % G_HEIGHT;
