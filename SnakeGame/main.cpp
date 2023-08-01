@@ -28,16 +28,21 @@ public:
 class Snake {
 
 public:
-	Snake(int dir, int length) : dir_(dir), length_(length)
+	Snake(int dir, int length, int score = 0) : dir_(dir), length_(length), score_(score)
 	{}
 
 	int GetDir() { return dir_; }
 	int GetLength() { return length_; }
+	int GetScore() { return score_; }
 	Object* GetBody() { return body_; }
+
 
 	void SetDir(int dir) { dir_ = dir; }
 	void SetLength(int length) { length_ = length; }
+	void SetScore(int score) { score_ = score; }
+
 	void IncLength(void) { length_++; }
+	void IncScore(int val) { score_ += val; }
 
 	// body 초기화
 	void InitBody(void)
@@ -85,6 +90,7 @@ public:
 private:
 	int dir_;
 	int length_;
+	int score_;
 	Object body_[BODY_MAX];
 };
 
@@ -99,13 +105,28 @@ public:
 int main(void)
 {
 
-
 	srand(time(NULL));
 	RenderWindow window(VideoMode(WIDTH, HEIGHT), "Snake Game");
 
 	//컴퓨터가 1초 동안 처리하는 횟수를 60으로 제한한다
 	//Frame Per Second를 60으로 조절
 	window.setFramerateLimit(15);
+
+	Font font;
+	if (!font.loadFromFile("C:\\Windows\\Fonts\\arial.ttf"))
+	{
+		printf("폰트 불러오기 실패");
+		return -1;
+	}
+
+	Text t_info;
+	t_info.setFont(font);
+	t_info.setFillColor(Color::Magenta);
+	t_info.setCharacterSize(50);
+	t_info.setPosition(0, 0);
+
+
+	char t_info_buf[100];
 
 	Snake snake = Snake(DIR_DOWN, 1);
 	snake.InitBody();
@@ -144,6 +165,9 @@ int main(void)
 
 		// update
 
+		sprintf(t_info_buf, "score : %d \n", snake.GetScore());
+		t_info.setString(t_info_buf);
+
 		snake.UpdateBody();
 		snake.UpdateHead();
 
@@ -157,6 +181,8 @@ int main(void)
 			apple.sprite_.setPosition(apple.x_ * BLOCK_SIZE, apple.y_ * BLOCK_SIZE);
 
 
+			snake.IncScore(5);
+
 			//뱀의 길이를 변화
 			if (snake.GetLength() < 20)
 				snake.IncLength();
@@ -168,6 +194,7 @@ int main(void)
 		for (int i = 0; i < snake.GetLength(); i++)
 			window.draw(snake.GetBody()[i].sprite_);
 		window.draw(apple.sprite_);  //draw를 늦게 할 수록 더 위에 있다
+		window.draw(t_info);
 
 		window.display();
 	}
