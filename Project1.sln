@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2023 CPP 2214", "Project1\P
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SnakeGame", "SnakeGame\SnakeGame.vcxproj", "{6C0D850F-4EDD-4107-89B6-E86C6AC60C9D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Inheritance", "Inheritance\Inheritance.vcxproj", "{FBA69884-1287-4CB2-BBEF-CC7F6F1150AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{6C0D850F-4EDD-4107-89B6-E86C6AC60C9D}.Release|x64.Build.0 = Release|x64
 		{6C0D850F-4EDD-4107-89B6-E86C6AC60C9D}.Release|x86.ActiveCfg = Release|Win32
 		{6C0D850F-4EDD-4107-89B6-E86C6AC60C9D}.Release|x86.Build.0 = Release|Win32
+		{FBA69884-1287-4CB2-BBEF-CC7F6F1150AD}.Debug|x64.ActiveCfg = Debug|x64
+		{FBA69884-1287-4CB2-BBEF-CC7F6F1150AD}.Debug|x64.Build.0 = Debug|x64
+		{FBA69884-1287-4CB2-BBEF-CC7F6F1150AD}.Debug|x86.ActiveCfg = Debug|Win32
+		{FBA69884-1287-4CB2-BBEF-CC7F6F1150AD}.Debug|x86.Build.0 = Debug|Win32
+		{FBA69884-1287-4CB2-BBEF-CC7F6F1150AD}.Release|x64.ActiveCfg = Release|x64
+		{FBA69884-1287-4CB2-BBEF-CC7F6F1150AD}.Release|x64.Build.0 = Release|x64
+		{FBA69884-1287-4CB2-BBEF-CC7F6F1150AD}.Release|x86.ActiveCfg = Release|Win32
+		{FBA69884-1287-4CB2-BBEF-CC7F6F1150AD}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -44,7 +44,8 @@ private:
 };
 
 int main(void) {
-	
+	Animal* animal = new Animal(1, "1");
+
 	Animal* animal = new Crane(3, "지우", 108);	
 	animal->Bark(); // 두루두루
 	
