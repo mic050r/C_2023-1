@@ -37,6 +37,24 @@ private:
 	RectangleShape* sprite_;
 };
 
+class Player : public Entity {
+public:
+	// 기말고사와 매우 관계가 없다... 생성자 만들기
+	Player(int life, int speed, RectangleShape* sprite, int score)
+		: Entity(life, speed, sprite), score_(score)
+	{}
+private:
+	int score_;
+};
+
+class Enemy : public Entity {
+public:
+	Enemy(int life, int speed, RectangleShape* sprite, int life_time)
+		:Entity(life, speed, sprite), life_time_(life_time)
+	{}
+private:
+	int life_time_;
+};
 int main(void)
 {
 	srand((unsigned int)time(NULL));
