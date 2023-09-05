@@ -1,4 +1,4 @@
-﻿#include <SFML/Graphics.hpp>
+﻿﻿#include <SFML/Graphics.hpp>
 #include <stdlib.h>
 #include <time.h>
 
@@ -21,6 +21,8 @@ public:
 		sprite_->move(x, y);
 	}
 
+	void eat() {}
+
 	// getter
 	int get_life(void) { return life_; }
 	int get_speed(void) { return speed_; }
@@ -39,10 +41,10 @@ private:
 
 class Player : public Entity {
 public:
-	// 기말고사와 매우 관계가 없다... 생성자 만들기
 	Player(int life, int speed, RectangleShape* sprite, int score)
 		: Entity(life, speed, sprite), score_(score)
 	{}
+
 private:
 	int score_;
 };
@@ -50,11 +52,13 @@ private:
 class Enemy : public Entity {
 public:
 	Enemy(int life, int speed, RectangleShape* sprite, int life_time)
-		:Entity(life, speed, sprite), life_time_(life_time)
+		: Entity(life, speed, sprite), life_time_(life_time)
 	{}
+
 private:
 	int life_time_;
 };
+
 int main(void)
 {
 	srand((unsigned int)time(NULL));
